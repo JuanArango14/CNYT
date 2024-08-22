@@ -1,66 +1,17 @@
+#Libreria computacion cuantica: Numeros complejos
+#Juan Felipe Arango Hidalgo
+#Ciencias y Tecnologia
+#Escuela Colombiana de Ingenieria Julio Garavito
+
+
 import math
 
-# Esto esta re bien mk
-"mgultiplicacion coordenadas polares"
-
-
-def multiplicacionpolar(c1, c2):
-    magnitud = c1[0] * c2[0]
-    phase = c1[1] + c2[1]
-    return magnitud, phase
-
-
-"conversion cartesiana a polar"
-
-
-def cartetopolar(c1):
-    return modulo(c1), fase(c1)
-
-
-"conversion polar a cartesiana"
-
-
-def polartocarte(c1):
-    x = c1[0] * math.cos(c1[1])
-    y = c1[0] * math.sin(c1[1])
-    return x, y
-
-
-"fase de vector"
-
-
-def fase(c1):
-    return math.atan(c1[1] / c1[0])
-
-
-"conjugado vector"
-
-
-def conjugado(c1):
-    real = c1[0]
-    imagina = -c1[1]
-    return (real, imagina)
-
-
-"modulo vectores"
-
-
-def modulo(a):
-    return (a[0] ** 2 + a[1] ** 2) ** (1 / 2)
-
-
-"division vectores"
-
-
-def div(c1, c2):
-    Re = (c1[0] * c2[0] + c1[1] * c2[1]) / (c2[0] ** 2 + c2[1] ** 2)
-    Im = (c2[0] * c1[1] - c1[0] * c2[1]) / (c2[0] ** 2 + c2[1] ** 2)
-    return (Re, Im)
-
+#Se sabe que los complejos se representan en forma de vectores
+"suma de vectores"
+def sum(c1, c2):
+    return (c1[0] + c2[0], c1[1] + c2[1])
 
 "multiplicacion vectores"
-
-
 def multi(c1, c2):
     real = c1[0] * c2[0] - c1[1] * c2[1]
     imagina = c1[0] * c2[1] + c1[1] * c2[0]
@@ -68,17 +19,44 @@ def multi(c1, c2):
 
 
 "resta de vectores"
-
-
 def resta(c1, c2):
     return (c1[0] - c2[0], c1[1] - c2[1])
 
 
-"sumatoria de vectores"
+"division vectores"
+def div(c1, c2):
+    Re = (c1[0] * c2[0] + c1[1] * c2[1]) / (c2[0] ** 2 + c2[1] ** 2)
+    Im = (c2[0] * c1[1] - c1[0] * c2[1]) / (c2[0] ** 2 + c2[1] ** 2)
+    return (Re, Im)
 
 
-def sum(c1, c2):
-    return (c1[0] + c2[0], c1[1] + c2[1])
+"modulo vectores"
+def modulo(a):
+    return (a[0] ** 2 + a[1] ** 2) ** (1 / 2)
+
+
+"conjugado vector"
+def conjugado(c1):
+    real = c1[0]
+    imagina = -c1[1]
+    return (real, imagina)
+
+
+"conversion cartesiana a polar"
+def cartetopolar(c1):
+    return modulo(c1), fase(c1)
+
+
+"conversion polar a cartesiana"
+def polartocarte(c1):
+    x = c1[0] * math.cos(c1[1])
+    y = c1[0] * math.sin(c1[1])
+    return x, y
+
+
+"fase de vector"
+def fase(c1):
+    return math.atan(c1[1] / c1[0])
 
 
 def main():
@@ -91,5 +69,5 @@ def main():
     fase((1, 1))  # (1 + 1i) = 45°
     polartocarte((1, 1))  # (1 + 1i) = (1,41,45)
     print("Cartesianas hacia polares", cartetopolar((1.41, 45)))  # (1.41,45) = (1 + 1i)
-    print("multiplicacion coordenadas polares", multiplicacionpolar((4, -3), (4, 3)))
-    main()
+    
+main()
