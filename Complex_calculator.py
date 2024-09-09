@@ -61,17 +61,56 @@ def conjugate_matrix(matriz1):
 def conjugate_vector(vector1):
     return np.conjugate(vector1)
 
-# Daga or dagger (conjugada transpuesta) matrix
+#Daga or dagger (conjugada transpuesta) matrix
 def daga_matrix(matriz1):
     return np.conjugate(np.transpose(matriz1))
 
-# Daga or dagger (conjugada transpuesta) vector
+#Daga or dagger (conjugada transpuesta) vector
 def daga_vector(vector1):
     return np.conjugate(np.transpose(vector1))
 
-# Product of two matrix
+#Product of two matrix
 def producto_matrices(matriz1, matriz2):
     return np.dot(matriz1, matriz2)
+
+#Action of matrix on a vector
+def action_matrices(matriz1, vector1):
+    return np.dot(matriz1, vector1)
+
+#Inner product of two vector
+def inner_product(vector1, vector2):
+    return np.inner(vector1, vector2)
+
+#Norma of vector
+def norma_vector(vector1):
+    return np.linalg.norm(vector1)
+
+#Distance between 2 vectors
+def distancia_vector(vector1, vector2):
+    return np.linalg.norm(vector1 - vector2)
+
+#Valores y vectores propio de una matriz
+def valores_propios(matriz2):
+    return np.linalg.eig( matriz2)
+
+#Verify if the matriz is unitary
+def is_unitary(matriz1):
+    return np.allclose(np.dot(matriz1, np.linalg.inv(matriz1)), np.eye(matriz1.shape[0]))
+
+#Verify if the matriz is hermitian
+def is_hermitian(matriz1):
+    return np.allclose(matriz1, np.conjugate(np.transpose(matriz1)))
+
+#Tensor product between two matrix
+def tensor_product(matriz1, matriz2):
+    return np.kron(matriz1, matriz2)
+
+#Tensor product between two vector
+
+def tensor_product_vector(vector1, vector2):
+    return np.outer(vector1, vector2)
+
+
 
 #CALCULATIONS:
 result_addition = sum_vectores(vector1, vector2)
@@ -87,6 +126,15 @@ rconjugate_vector = conjugate_vector(vector1)
 result_daga_matrix = daga_matrix(matriz1)
 result_daga_vector = daga_vector(vector1)
 result_producto_matrices = producto_matrices(matriz1, matriz2)
+ractional_matrices = action_matrices(matriz1, vector1)
+rinner_product= inner_product(vector1, vector2)
+rnorma_vector= norma_vector(vector1)
+rdistance_vector= distancia_vector(vector1, vector2)
+rvalues_vector= valores_propios(matriz2)
+runitary=is_unitary(matriz1)
+rhermitian=is_hermitian(matriz1)
+rtensor_matrix= tensor_product(matriz1, matriz2)
+rtensor_vector= tensor_product_vector(vector1, vector2)
 
 def main():
     print("Resultado de la adición de vectores complejos:", result_addition)
@@ -102,7 +150,15 @@ def main():
     print("Resultado de la dagger de una matriz:", result_daga_matrix)
     print("Resultado de la dagger de un vector:", result_daga_vector)
     print("Resultado del producto de dos matrices:", result_producto_matrices)
-    
+    print("Resultado de la accion de la matriz sobre un vector:", ractional_matrices)
+    print("Resultado de el producto interno de dos vectores:", rinner_product)
+    print("Resultado de la norma de un vector:", rnorma_vector)
+    print("Resultado de la distancia entre 2 vectores:", rdistance_vector)
+    print("Resultado de los valores propios de una matriz: ", rvalues_vector)
+    print("La matriz es unitaria?: ", runitary)
+    print("La matriz es hermitiana?: ", runitary)
+    print("Resultado del producto tensor entre dos matrices: ", rtensor_matrix)
+    print("Resultado del producto tensor entre dos vectors: ", rtensor_vector)
 main()
 
 
